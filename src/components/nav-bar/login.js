@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import axios from "axios";
+import Auth from '../services/auth'
 import { Form, Button } from "react-bootstrap";
 // import jwt from "jsonwebtoken";
 
@@ -16,33 +16,24 @@ class Login extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleSubmit (event) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    if (form.checkValidity() === true) {
-      event.preventDefault();
-      event.stopPropagation();
-      this.setState({validated: true});
-      
-      axios.post('http://localhost:4000/usuarios/login',{
-        email: this.state.email,
-        password: this.state.password
-      })
-    .then(response => {
-      this.setState({ isLoaded: true, submitDone: true, isLogged: true})
-      localStorage.setItem('token', response.data)
-    })
-    .catch(error => {
-    this.setState({
-        isLoaded: true,
-        error
-    })
-    })
-  
+  async handleSubmit(e){
+    e.preventDefault();
+    if (!this.state.email || !this.state.password) {
+        console.log('Fields required!')
     } else {
-      this.setState({ isLoading: true });
+        console.log('Submitted!')
+        console.log(this.state.email, this.state.password)
+        try {
+            await Auth.login(
+                this.state.email,
+                this.state.password
+            )    
+        } catch (error) {
+          this.setState({error:error}); console.log(error)
+        }
+        this.setState({submitDone:true})
     }
-  }
+}
 
   render() {
     const { isLoading, isLogged, items } = this.state;
@@ -60,7 +51,7 @@ class Login extends React.Component {
             </div>
         }
         <div className="text-center">
-            <h3 className="text-primary">Sign In</h3>
+            <h3 className="text-primary">Login</h3>
         </div>
         <Form noValidate onSubmit={this.handleSubmit} validated={this.state.validated}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -83,7 +74,7 @@ class Login extends React.Component {
           </Form.Group>
           <Button variant="primary" type="submit">Aceptar</Button>
         </Form>
-        {this.state.submitDone && <Navigate to={`/perfil`} replace={true} />}
+        {this.state.submitDone && <Navigate to={`/Usuarios`} replace={true} />}
       </div>
     );
   }

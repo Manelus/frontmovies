@@ -1,40 +1,37 @@
 import React from "react";
-import { Navigate } from "react-router-dom"
-import axios from "axios";
+import { Navigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import Auth from "../services/auth"
 
 class Register extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {nombre: '', apellido: '', email: '', password: '', submitDone:false, passwordOk:false};
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
+  constructor(props){
+      super(props)
+      this.state = {nombre: '', apellido: '', password:'', email:'', submitDone:false, error:null}
+      this.handleChange = this.handleChange.bind(this)
+      this.handleSubmit = this.handleSubmit.bind(this)
+  }
 
-    handleChange(event) {
-      this.setState({[event.target.name]: event.target.value});
-    }
-  
-    handleSubmit(e) {
+  handleChange(event){
+      this.setState({[event.target.name]: event.target.value})
+  }
+
+  async handleSubmit(e){
       e.preventDefault();
-     
-      axios.post('http://localhost:4000/usuarios/register',{
-        nombre: this.state.nombre,
-        apellido: this.state.apellido,
-        email: this.state.email,
-        password: this.state.password
-      })
-      .then(response => {
-      this.setState({items: response.data, submitDone: true, isLoaded: true})
-      })
-      .catch(error => {
-      this.setState({
-          isLoaded: true,
-          error
-      })
-      })
-    }
-  
+
+      try {
+          Auth.registrar(
+              this.state.nombre,
+              this.state.apellido,
+              this.state.email,
+              this.state.password
+          )
+              .then((res)=> 
+                {this.setState({ submitDone:true })})
+              .catch(err =>{this.setState({error:err}); console.log(err)})
+      } catch (error) {
+        this.setState({error:error}); console.log(error)
+      }    
+  }
     render(){ 
       return (
           <div className="h-75 pb-5 d-flex flex-column align-items-between justify-content-center">
@@ -61,6 +58,9 @@ class Register extends React.Component {
                   </div>
                   <Button className="primary" type="submit">Registrarse</Button>
                 </form>
+                {(this.state.error !== null) &&
+                <div className="error">Error del sistema</div>
+                }
                 {this.state.submitDone &&<Navigate to="/Login" replace={true} />}
               </div>
           </div>

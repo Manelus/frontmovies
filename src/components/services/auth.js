@@ -1,35 +1,54 @@
 import axios from "axios";
-import authHeader from "./auth-header";
+import { Navigate } from "react-router-dom";
+
 const url = 'http://localhost:4000/'
 
+
 class AuthService {
-    async login(email, password){
-        const res = await axios.post(url + 'usuarios/login',{
-        email,
-        password
-    });
-    if (res.data.token) {
-        localStorage.setItem('usuario', JSON.stringify(res.token))
-    }
-    return res.data;
-    }
+    login(email, password) {
+        try {
+            return axios.post(url + 'usuarios/login', {
+                email,
+                password
+            }).then(response=>{
+                if (response.data) {
+                    localStorage.setItem("token", JSON.stringify(response.data.token));
+                }
+                return true;
+
+            }
+            )
+        } catch (error) {
+            return false;
+        }
+    } 
+
     logout(){
-        try{
-            return axios.get(url + 'usuarios/logout', { headers: authHeader() })
-            .then(() => {return true}).catch(() => {return false});
-            } catch (error) {
+        axios.delete(url + 'usuarios/logout')
+        localStorage.removeItem('token')
+        return <Navigate to='/login' />
+    } 
+
+   
+    async registrar(nombre, apellido, email, password){
+        try {
+            const res = await axios.post(url + 'usuarios/register', {
+                nombre,
+                apellido, 
+                email, 
+                password
+            })
+            console.log(res)
+            return true//this.login(email, password)
+            
+        } catch (error) {
+            console.log(error)
+            throw new Error(error.message)
         }
     }
-    registrar(nombre, apellido,email, password){
-        return axios.post(url + 'usuarios/register',{
-            nombre,
-            apellido,
-            email,
-            password
-        })
-    }
+
     getCurrentUser(){
-        return JSON.parse(localStorage.getItem('usuario'))
+        return JSON.parse(localStorage.getItem('/usuario'))
     }
 }
 
