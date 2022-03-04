@@ -74,7 +74,7 @@ class Login extends React.Component {
           </Form.Group>
           <Button variant="primary" type="submit">Aceptar</Button>
         </Form>
-        {this.state.submitDone && <Navigate to={`/usuarios/:id`} replace={true} />}
+        {this.state.submitDone && <Navigate to={`/Usuarios`} replace={true} />}
       </div>
     );
   }
