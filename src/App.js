@@ -30,7 +30,7 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="*" element={<NoMatch404 />} />
         {/* usuarios */}
-          <Route path="usuarios/:id/:token" element={<Usuarios />} />
+          <Route path="usuarios/:id" element={<Usuarios />} />
         {/* movies */}
           <Route path="movies" element={<Movies />} />
         {/* pedidos */}
