@@ -15,7 +15,7 @@ const Usuarios = () =>  {
         const retrieveProfile = async () => {
             await axios.get(`http://localhost:4000/usuarios`, { headers: {"Authorization" : `Bearer ${token}`}})
             .then(response => {
-                setUser(response?.data)
+                setUser(response.data)
                 setIsLoaded(true)
             })
             .catch(error => {
@@ -25,7 +25,7 @@ const Usuarios = () =>  {
         }
         if (!user) retrieveProfile();
     }, [user, id, token])
-
+    
     if (error) return (<div>Error: {error.message}</div>);
     if (!isLoaded) return (<div>Loading...</div>);
 

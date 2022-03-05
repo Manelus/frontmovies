@@ -12,14 +12,9 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
-  }
-
   async handleSubmit(e){
     e.preventDefault();
     if (!this.state.email || !this.state.password) {
-        console.log('Fields required!')
     } else {
         console.log('Submitted!')
         console.log(this.state.email, this.state.password)
@@ -35,8 +30,12 @@ class Login extends React.Component {
     }
 }
 
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
   render() {
-    const { isLoading, isLogged, items } = this.state;
+    const { isLoading, isLogged } = this.state;
     const onChange = (field) => (e) => {
       e.preventDefault();
       this.setState({ [field]: e?.target?.value })
@@ -74,7 +73,7 @@ class Login extends React.Component {
           </Form.Group>
           <Button variant="primary" type="submit">Aceptar</Button>
         </Form>
-        {this.state.submitDone && <Navigate to={`/Usuarios`} replace={true} />}
+        {this.state.submitDone && <Navigate to={`/usuarios`} replace={true} />}
       </div>
     );
   }
