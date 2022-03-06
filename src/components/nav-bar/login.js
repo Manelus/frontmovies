@@ -16,8 +16,8 @@ class Login extends React.Component {
     e.preventDefault();
     if (!this.state.email || !this.state.password) {
     } else {
-        console.log('Submitted!')
-        console.log(this.state.email, this.state.password)
+        console.log('Submitted!');
+        console.log(this.state.email, this.state.password);
         try {
             await Auth.login(
                 this.state.email,
