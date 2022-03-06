@@ -15,13 +15,13 @@ class Servicios {
     }
 
     getMovies(){
-        return axios.get(url + 'movies/', {
+        return axios.get(url + 'pedidos/', {
             headers: authHeader()
         })
     }
 
     getPedidos(){
-        return axios.get(url + 'pedidos', {
+        return axios.get(url + 'pedidos/pedido', {
             headers: authHeader()
         })
     }

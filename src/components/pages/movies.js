@@ -1,56 +1,5 @@
-// import React from "react";
-// import axios from "axios";
-
-// const getImage = (path) => `https://image.tmdb.org/t/p/w500/${path}`;
-
-// class Movies extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//         items: [],
-//         isLoaded: false,
-//         error: null
-//         }
-//     }
-//     componentDidMount() {
-//         axios('http://localhost:4000/movies')
-//         .then(response => {
-//             console.log(response);
-//         this.setState({items: response.data, isLoaded: true})
-//         })
-//         .catch(error => {
-//         this.setState({
-//             isLoaded: true,
-//             error
-//         })
-//         })
-//     }
-//     render() {
-//         const { error, isLoaded, items } = this.state;
-//         if (error) {
-//         return <div>Error: {error.message}</div>;
-//         } else if (!isLoaded) {
-//         return <div>Loading...</div>;
-//         } else {
-//         return (
-//             <div className="App">
-//                 <header className="App-header">
-//                     {items.map((movie) =>(
-//                         <div>
-//                             <img src={getImage(movie.poster_path)}/>
-//                             <p>{movie.original_title}</p>
-//                         </div>
-//                     ))}
-//                 </header>
-//             </div>   
-//         );
-//         }
-//     }
-// }
-
-// export default Movies;
-    
-import React, { Button, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom"
 import axios from "axios";
 import "./movie.css";
 
@@ -83,8 +32,10 @@ function App() {
           ))}
         </div>
       </header>
+      <button className="buttonLink my-5"><Link to='nuevopedido'>Pedido</Link></button>
+      <button className="buttonLink my-5"><Link to='pedido'>Tus pedidos</Link></button>
     </div>
-
+    
   );
 }
 

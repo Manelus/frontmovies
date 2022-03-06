@@ -25,17 +25,7 @@ function Layout() {
             <li className={liClassName}>
               <NavLink className={({ isActive }) =>
                   isActive ? (navLink + ' ' + activeClassName) : navLink
-              } to="/movies">Movies</NavLink>
-            </li>
-            <li className={liClassName}>
-              <NavLink className={({ isActive }) =>
-                  isActive ? (navLink + ' ' + activeClassName) : navLink
               } to="/login">Login</NavLink>
-            </li>
-            <li className={liClassName}>
-              <NavLink className={({ isActive }) =>
-                  isActive ? (navLink + ' ' + activeClassName) : navLink
-              } to="/logout">Logout</NavLink>
             </li>
             
           </ul>
