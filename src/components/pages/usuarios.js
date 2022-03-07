@@ -13,7 +13,7 @@ const Usuarios = () =>  {
 
     useEffect( () => {
         const retrieveProfile = async () => {
-            await axios.get(`http://localhost:4000/usuarios/id/:id`, { headers: {"Authorization" : `Bearer ${token}`}})
+            await axios.get(`http://localhost:4000/users/id/:id`, { headers: {"Authorization" : `Bearer ${token}`}})
             .then(response => {
                 setUser(response.data)
                 setIsLoaded(true)

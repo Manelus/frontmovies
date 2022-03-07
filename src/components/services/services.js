@@ -5,11 +5,11 @@ const url = 'http://localhost:4000/'
 
 class Servicios {
     getAll() {
-        return axios.get(url + 'usuarios')
+        return axios.get(url + 'users')
     }
 
     getPerfil(){
-        return axios.get(url + 'usuarios/id', {
+        return axios.get(url + 'users/id', {
             headers: authHeader()
         })
     }

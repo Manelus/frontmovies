@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import servicios from "../services/services"
 
 class nuevoPedido extends React.Component {

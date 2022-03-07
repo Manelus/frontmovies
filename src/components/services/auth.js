@@ -7,7 +7,7 @@ const url = 'http://localhost:4000/'
 class AuthService {
     login(email, password) {
         try {
-            return axios.post(url + 'usuarios/login', {
+            return axios.post(url + 'users/login', {
                 email,
                 password
             }).then(response=>{
@@ -24,7 +24,7 @@ class AuthService {
     } 
 
     logout(){
-        axios.delete(url + 'usuarios/logout')
+        axios.delete(url + 'users/logout')
         localStorage.removeItem('token')
         return <Navigate to='/login' />
     } 
@@ -32,7 +32,7 @@ class AuthService {
    
     async registrar(nombre, apellido, email, password){
         try {
-            const res = await axios.post(url + 'usuarios/register', {
+            const res = await axios.post(url + 'users/register', {
                 nombre,
                 apellido, 
                 email, 
@@ -48,7 +48,7 @@ class AuthService {
     }
 
     getCurrentUser(){
-        return JSON.parse(localStorage.getItem('/usuario/id/:id'))
+        return JSON.parse(localStorage.getItem('/users/id/:id'))
     }
 }
 
