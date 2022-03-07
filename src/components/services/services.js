@@ -20,10 +20,19 @@ class Servicios {
         })
     }
 
-    getPedidos(){
-        return axios.get(url + 'pedidos/pedido', {
-            headers: authHeader()
-        })
+    async pedidos(idUser, idMovie){
+        try {
+            const res = await axios.post(url + 'pedidos', {
+                idUser,
+                idMovie
+            })
+            console.log(res)
+            return true
+            
+        } catch (error) {
+            console.log(error)
+            throw new Error(error.message)
+        }
     }
 }
 

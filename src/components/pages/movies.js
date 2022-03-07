@@ -4,7 +4,7 @@ import axios from "axios";
 import "./movie.css";
 
 const api_key = "435c8880fa41fdbe5fba133c47f78d2b";
-const BASE_URL = "https://api.themoviedb.org/3";
+const BASE_URL = "https://api.themoviedb.org/3/movie/popular?api_key=cea68b520beecac6718820e4ac576c3a&language=es-ES";
 const getImage = (path) => `https://image.tmdb.org/t/p/w300/${path}`;
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
           ))}
         </div>
       </header>
-      <button className="buttonLink my-5"><Link to='nuevopedido'>Pedido</Link></button>
+      <button className="buttonLink my-5"><Link to='/nuevopedido'>Pedido</Link></button>
       <button className="buttonLink my-5"><Link to='pedido'>Tus pedidos</Link></button>
     </div>
     

@@ -15,6 +15,7 @@ import Login from './components/nav-bar/login';
 import Logout from './components/nav-bar/logout';
 import Usuarios from "./components/pages/usuarios";
 import Movies from "./components/pages/movies";
+import Movie from "./components/pages/movie";
 import Pedidos from "./components/pages/pedidos";
 import NuevoPedido from "./components/pages/nuevopedido";
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="usuarios" element={<Usuarios />} />
         {/* movies */}
           <Route path="movies" element={<Movies />} />
+          <Route path="movie" element={<Movie />} />
         {/* pedidos */}
           <Route path="pedidos" element={<Pedidos />} />
           <Route path="nuevoPedido" element={<NuevoPedido />} />
