@@ -8,32 +8,29 @@ class Servicios {
         return axios.get(url + 'users')
     }
 
-    getPerfil(){
+    getPerfil() {
         return axios.get(url + 'users/id', {
             headers: authHeader()
         })
     }
 
-    getMovies(){
-        return axios.get(url + 'pedidos/', {
+    // getMovies(){
+    //     return axios.get(url + 'pedidos/', {
+    //         headers: authHeader()
+    //     })
+    // }
+
+    pedidos(idUser, idMovie) {
+
+        return axios.post(url + 'pedido', {
+            idUser,
+            idMovie
+        }, {
             headers: authHeader()
         })
-    }
 
-    async pedidos(idUser, idMovie){
-        try {
-            const res = await axios.post(url + 'pedidos', {
-                idUser,
-                idMovie
-            })
-            console.log(res)
-            return true
-            
-        } catch (error) {
-            console.log(error)
-            throw new Error(error.message)
-        }
     }
 }
+
 
 export default new Servicios()

@@ -26,8 +26,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="grid">
-          {data.map((movie) => (
-            <div className="item">
+          {data.map((movie, i) => (
+            <div className="item" key={i}>
               <img src={getImage(movie.poster_path)} />
               <p>{movie.original_title}</p>
             </div>

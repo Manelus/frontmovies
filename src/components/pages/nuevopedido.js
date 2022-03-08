@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import Auth from "../services/services";
+import services from "../services/services";
 
 class nuevoPedido extends React.Component {
   constructor(props){
@@ -11,23 +11,24 @@ class nuevoPedido extends React.Component {
   }
 
   handleChange(event){
-    this.setState({[event.target.idUser]: event.target.value})
-    this.setState({[event.target.idMovie]: event.target.value})
+    this.setState({[event.target.name]: event.target.value})
   }
 
   async handleSubmit(e){
       e.preventDefault();
-
+      console.log(this.state.idUser)
       try {
-          Auth.registrar(
+          services.pedidos(
             this.state.idUser,
             this.state.idMovie
           )
               .then((res)=> 
                 {this.setState({ submitDone:true })})
-              .catch(err =>{this.setState({error:err}); console.log(err)})
+              .catch(err =>{this.setState({error:err}); 
+              console.log(err)})
       } catch (error) {
-        this.setState({error:error}); console.log(error)
+        this.setState({error:error}); 
+        console.log(error)
       }    
   }
   
@@ -40,11 +41,11 @@ class nuevoPedido extends React.Component {
                   <div className="container d-flex flex-column align-items-between justify-content-center" >
                   <label className="row m-2">
                       <p className="col-6">Id usuario:</p>
-                      <input className="col-6" name="idUser" type='text' required value={this.state.email} onChange={this.handleChange} />
+                      <input className="col-6" name="idUser" type='text' required value={this.state.idUser} onChange={this.handleChange} />
                     </label>
                     <label className="row m-2">
                       <p className="col-6">Id Movie:</p>
-                      <input className="col-6" name="idMovie" type='text' required value={this.state.nombre} onChange={this.handleChange} />
+                      <input className="col-6" name="idMovie" type='text' required value={this.state.idMovie} onChange={this.handleChange} />
                     </label>
                   </div>
                   <button className="primary" type="submit">Alquilar</button>
