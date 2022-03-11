@@ -24,7 +24,7 @@ class AuthService {
     } 
 
     logout(){
-        axios.delete(url + 'users/logout')
+        axios.get(url + 'users/logout')
         localStorage.removeItem('token')
         return <Navigate to='/login' />
     } 

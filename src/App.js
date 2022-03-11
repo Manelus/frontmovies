@@ -1,13 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 
-import {
-  Routes,
-  Route,
-  Link,
-  Redirect
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
+import Home from "./components/nav-bar/home";
 import Layout from "./components/layout/layout";
 import Register from "./components/nav-bar/register";
 import NoMatch404 from "./components/nav-bar/404";
@@ -26,6 +22,7 @@ function App() {
     
     <Routes>
         <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="logout" element={<Logout />} />
           <Route path="register" element={<Register />} />

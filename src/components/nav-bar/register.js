@@ -36,7 +36,7 @@ class Register extends React.Component {
       return (
           <div className="h-75 pb-5 d-flex flex-column align-items-between justify-content-center">
               <div>
-                <h2 className="mb-5">Register</h2>
+                <h2 className="mb-5">Inscripción</h2>
                 <form onSubmit={this.handleSubmit}>
                   <div className="container d-flex flex-column align-items-between justify-content-center" >
                     <label className="row m-2">

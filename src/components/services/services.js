@@ -25,8 +25,8 @@ class Servicios {
         return axios.post(url + 'pedido', {
             idUser,
             idMovie
-        }, {
-            headers: authHeader()
+        // }, {
+        //     headers: authHeader()
         })
 
     }

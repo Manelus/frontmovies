@@ -42,3 +42,7 @@
   font-style: inherit;
 }
 
+.container-fluid vh-100{
+  background-color: lightslategray;
+}
+

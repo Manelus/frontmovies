@@ -20,22 +20,28 @@ function App() {
     });
   }, []);
 
-  console.log('>>>> DATA', data);
 
   return (
+    
     <div className="App">
+      <button className="buttonLink my-5"><Link to='/nuevopedido'>Pedido</Link></button>
+      <button className="buttonLink my-5"><Link to='/pedido'>Tus pedidos</Link></button>
+      <button className="buttonLink my-5"><Link to='/usuarios'>Mi Perfil</Link></button>
+      <button className="buttonLink my-5"><Link to='/logout'>logout</Link></button>
       <header className="App-header">
         <div className="grid">
           {data.map((movie, i) => (
             <div className="item" key={i}>
               <img src={getImage(movie.poster_path)} />
-              <p>{movie.original_title}</p>
+              <p>{movie.id} {movie.original_title}</p>
             </div>
           ))}
         </div>
       </header>
       <button className="buttonLink my-5"><Link to='/nuevopedido'>Pedido</Link></button>
-      <button className="buttonLink my-5"><Link to='pedido'>Tus pedidos</Link></button>
+      <button className="buttonLink my-5"><Link to='/pedido'>Tus pedidos</Link></button>
+      <button className="buttonLink my-5"><Link to='/usuarios'>Mi Perfil</Link></button>
+      <button className="buttonLink my-5"><Link to='/logout'>logout</Link></button>
     </div>
     
   );

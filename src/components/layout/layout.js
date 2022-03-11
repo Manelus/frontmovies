@@ -1,5 +1,6 @@
 import React from "react";
-import { NavLink, Link, Outlet} from "react-router-dom";
+import { NavLink, Outlet} from "react-router-dom";
+import '../../App';
 
 function Layout() {
   let activeClassName = "underline"
@@ -27,7 +28,6 @@ function Layout() {
                   isActive ? (navLink + ' ' + activeClassName) : navLink
               } to="/login">Login</NavLink>
             </li>
-            
           </ul>
         </div>
       </nav>
